@@ -5,7 +5,7 @@ function Book(title, author, isbn) {
     this.isbn = isbn;
 }
 
-// UI COnstrucror
+// UI Construcror
 function Ui() {   
 }
 
@@ -21,7 +21,7 @@ Ui.prototype.addBookToList = function(book) {
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.isbn}</td>
-        <td><a href="">X</a></td>
+        <td><a href="#" class="delete">X</a></td>
     `;
 
     // Append to list
@@ -48,6 +48,13 @@ Ui.prototype.showAlert = function (message, className) {
     }, 3000);
 }
 
+// Delete book
+
+Ui.prototype.deleteBook = function(target) {
+	if(target.className === 'delete') {
+		target.parentElement.parentElement.remove();
+	}
+}
 
 // Clear fields
 Ui.prototype.clearFields = function () {
@@ -56,8 +63,7 @@ Ui.prototype.clearFields = function () {
     document.getElementById('isbn').value = '';
 }
 
-
-// Event listeners
+// Event listeners for add book
 document.getElementById('book-form').addEventListener('submit', 
     function (e) {
         // Get form values
@@ -67,28 +73,34 @@ document.getElementById('book-form').addEventListener('submit',
 
         // Instanciate book
         let book = new Book(title, author, isbn);
-
         // Instanciate Ui
         let ui = new Ui();
-
         // Validate
         if (title === '' || author === '' || isbn === '') {
             // Error alert;
             ui.showAlert('Please fill all fields', 'error');
-            
         } else {
-
             // Add book to list
             ui.addBookToList(book);
-
             // Show success alert
             ui.showAlert('Book added!', 'success');
-
             // Ui clear form fields
             ui.clearFields();
-
         }
+        e.preventDefault();
+    }
+);
 
+//Event listener fot delete
+document.getElementById('book-list').addEventListener('click', 
+    function(e) {
+        // Instanciate Ui
+        let ui = new Ui();
+
+        // Delete book
+        ui.deleteBook(e.target);
+
+        ui.showAlert('Book removed!', 'success')
 
         e.preventDefault();
     }
