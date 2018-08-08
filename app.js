@@ -10,10 +10,22 @@ function Ui() {
 }
 
 // Add book to list
-Ui.prototype.addBookToList = function (book) {
+Ui.prototype.addBookToList = function(book) {
+    let list = document.getElementById('book-list');
+
+    // Create table row
+    let row = document.createElement('tr');
+    
+    // Insert colls
+    row.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.isbn}</td>
+    `;
+    
+    console.log(row);
     
 }
-
 
 
 // Event listeners
@@ -33,8 +45,7 @@ document.getElementById('book-form').addEventListener('submit',
         // Add book to list
         ui.addBookToList(book);
 
-        console.log(book); 
-        
+
         e.preventDefault();
     }
 );
