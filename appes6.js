@@ -74,6 +74,11 @@ class Store {
 
     static displayBooks() {
         const books = Store.getBooks();
+
+        books.forEach(function(book) {
+            const ui = new Ui();
+            ui.addBookToList(book);
+        });
     }
 
 
@@ -86,6 +91,9 @@ class Store {
     static removeBook() {}
 }
 
+
+// DOM Load event
+document.addEventListener('DOMContentLoaded', Store.displayBooks());
 
 
 // Event listeners for add book
@@ -129,6 +137,8 @@ document.getElementById('book-list').addEventListener('click',
 
         // Delete book
         ui.deleteBook(e.target);
+
+        // Remove from Local storage
 
         ui.showAlert('Book removed!', 'success')
 
