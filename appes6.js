@@ -60,6 +60,19 @@ class Ui {
 }
 
 
+// Local storage class
+class Store {
+    static getBooks() {}
+
+    static displayBooks() {}
+
+    static addBook() {}
+
+    static removeBook() {}
+}
+
+
+
 // Event listeners for add book
 document.getElementById('book-form').addEventListener('submit',
     function(e) {
