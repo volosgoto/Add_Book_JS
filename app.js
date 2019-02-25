@@ -6,8 +6,7 @@ function Book(title, author, isbn) {
 }
 
 // UI Construcror
-function Ui() {   
-}
+function Ui() {}
 
 // Add book to list
 Ui.prototype.addBookToList = function(book) {
@@ -15,7 +14,7 @@ Ui.prototype.addBookToList = function(book) {
 
     // Create table row
     let row = document.createElement('tr');
-    
+
     // Insert colls
     row.innerHTML = `
         <td>${book.title}</td>
@@ -29,7 +28,7 @@ Ui.prototype.addBookToList = function(book) {
 }
 
 // Show Alerts
-Ui.prototype.showAlert = function (message, className) {
+Ui.prototype.showAlert = function(message, className) {
     // Create element
     let div = document.createElement('div');
     // Add classes
@@ -43,29 +42,28 @@ Ui.prototype.showAlert = function (message, className) {
     // Insert Alert
     container.insertBefore(div, form);
     // Timeout after 3 sec
-    setTimeout(function () {
+    setTimeout(function() {
         document.querySelector('.alert').remove();
     }, 3000);
 }
 
 // Delete book
-
 Ui.prototype.deleteBook = function(target) {
-	if(target.className === 'delete') {
-		target.parentElement.parentElement.remove();
-	}
+    if (target.className === 'delete') {
+        target.parentElement.parentElement.remove();
+    }
 }
 
 // Clear fields
-Ui.prototype.clearFields = function () {
+Ui.prototype.clearFields = function() {
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
     document.getElementById('isbn').value = '';
 }
 
 // Event listeners for add book
-document.getElementById('book-form').addEventListener('submit', 
-    function (e) {
+document.getElementById('book-form').addEventListener('submit',
+    function(e) {
         // Get form values
         let title = document.getElementById('title').value;
         let author = document.getElementById('author').value;
@@ -92,7 +90,7 @@ document.getElementById('book-form').addEventListener('submit',
 );
 
 //Event listener fot delete
-document.getElementById('book-list').addEventListener('click', 
+document.getElementById('book-list').addEventListener('click',
     function(e) {
         // Instanciate Ui
         let ui = new Ui();
