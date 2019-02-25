@@ -1,0 +1,12 @@
+{
+  "name": "Add_Book_JS",
+  "homepage": "https://volosgoto/github.io/Add_Book_JS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/volosgoto/Add_Book_JS.git",
+  "author": "volosgoto <volosgoto@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
